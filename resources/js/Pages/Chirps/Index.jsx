@@ -8,16 +8,16 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 
 //
-import { useForm, Head } from "@inertiajs/react";
+import { useForm, Head } from '@inertiajs/react';
 
 const Index = ({ auth }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
-        message: "",
+        message: '',
     });
 
-    const submit = () => {
+    const submit = (e) => {
         e.preventDefault();
-        post(route("chirps.store"), { onSuccess: () => reset() });
+        post(route('chirps.store'), { onSuccess: () => reset() });
     };
 
     return (
@@ -33,13 +33,12 @@ const Index = ({ auth }) => {
                        onChange={e => setData('message' , e.target.value)}
                     ></textarea>
                     <InputError message={errors.message} className="mt-2" />
-                    <PrimaryButton className="mt-4" disabled={processing} > Chirp </PrimaryButton>
+                    <PrimaryButton className="mt-4" disabled={processing} >Chirp</PrimaryButton>
                 </form>
             </div>
         </AuthenticatedLayout>
     );
 
-    return <div>Index</div>;
 };
 
 export default Index;
